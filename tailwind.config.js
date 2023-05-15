@@ -5,7 +5,9 @@ export default {
     colors: {
       primary: '#F6D65D',
       light: '#FDF7DF',
-      dark: '#0B2435'
+      dark: '#0B2435',
+      'dark-light': '#20435C',
+      'dark-lighter': '#355C76'
     },
     extend: {
       backgroundImage: {
@@ -13,6 +15,9 @@ export default {
       },
       maxWidth: {
         '8xl': '90rem'
+      },
+      minHeight: {
+        '80vh': '80vh'
       }
     }
   },
