@@ -1,6 +1,8 @@
 <template>
   <div class="grid min-h-80vh place-items-center">
-    <div class="flex flex-col gap-8 rounded-xl bg-light/80 p-10">
+    <app-loader v-if="userStore.loadingUser" />
+
+    <div v-else class="flex flex-col gap-8 rounded-xl bg-light/80 p-10">
       <!-- LOGIN PAGE -->
       <div class="flex flex-col">
         <div class="flex justify-center">
@@ -16,8 +18,7 @@
               <input
                 class="rounded-lg border border-dark px-4 py-2"
                 type="email"
-                name="email"
-                id="email"
+                v-model="email"
                 placeholder="Email"
               />
             </div>
@@ -26,8 +27,7 @@
               <input
                 class="rounded-lg border border-dark px-4 py-2"
                 type="password"
-                name="password"
-                id="password"
+                v-model="password"
                 placeholder="Password"
               />
             </div>
@@ -41,7 +41,8 @@
                 class="rounded-lg bg-dark px-4 py-2 font-bold text-light hover:bg-dark-light"
                 type="submit"
                 name="submit"
-                id="submit"
+                @click.prevent="login"
+                v-if="!userStore.loadingUser"
               >
                 Log In
               </button>
@@ -63,7 +64,23 @@
 </template>
 
 <script>
-export default {}
+import AppLoader from '../components/AppLoader.vue'
+import { useUserStore } from '../stores/user'
+export default {
+  components: { AppLoader },
+  data() {
+    return {
+      email: '',
+      password: '',
+      userStore: useUserStore()
+    }
+  },
+  methods: {
+    async login() {
+      await this.userStore.loginUser(this.email, this.password)
+    }
+  }
+}
 </script>
 
 <style></style>
