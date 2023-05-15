@@ -10,6 +10,9 @@ export default {
     extend: {
       backgroundImage: {
         'hero-pattern': "url('/src/assets/images/bg-pattern.png')"
+      },
+      maxWidth: {
+        '8xl': '90rem'
       }
     }
   },
