@@ -7,7 +7,11 @@ export default {
       light: '#FDF7DF',
       dark: '#0B2435'
     },
-    extend: {}
+    extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/src/assets/images/bg-pattern.png')"
+      }
+    }
   },
   plugins: []
 }
