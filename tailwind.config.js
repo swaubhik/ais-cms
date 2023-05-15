@@ -7,7 +7,8 @@ export default {
       light: '#FDF7DF',
       dark: '#0B2435',
       'dark-light': '#20435C',
-      'dark-lighter': '#355C76'
+      'dark-lighter': '#355C76',
+      error: '#FF0000'
     },
     extend: {
       backgroundImage: {
