@@ -1,3 +1,17 @@
 <template>
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <main class="min-h-screen bg-primary bg-hero-pattern bg-cover bg-center bg-no-repeat">
+    <app-header />
+    <div class="mx-auto max-w-7xl">
+      <router-view />
+    </div>
+  </main>
 </template>
+
+<script>
+import AppHeader from './components/AppHeader.vue'
+export default {
+  components: { AppHeader }
+}
+</script>
+
+<style></style>
