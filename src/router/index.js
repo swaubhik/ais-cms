@@ -1,5 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import { useUserStore } from '../stores/user'
+
+const requireAuth = async (to, from, next) => {
+  const userStore = useUserStore()
+  userStore.loadingSession = true
+  const user = await userStore.currentUser()
+  if (user) {
+    next()
+  } else {
+    next('/login')
+  }
+  userStore.loadingSession = false
+}
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -30,7 +43,8 @@ const router = createRouter({
     {
       path: '/dashboard',
       name: 'dashboard',
-      component: () => import('../views/DashboardView.vue')
+      component: () => import('../views/DashboardView.vue'),
+      beforeEnter: requireAuth
     }
   ]
 })
