@@ -7,7 +7,7 @@
       <div class="flex flex-col">
         <div class="flex justify-center">
           <div class="flex flex-col">
-            <h1 class="text-2xl font-semibold text-dark">Log In</h1>
+            <h1 class="text-2xl font-bold text-dark">Log In</h1>
             <p class="sr-only mt-2 text-dark">Log in to your account to continue</p>
           </div>
         </div>

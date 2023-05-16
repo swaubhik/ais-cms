@@ -13,5 +13,3 @@ export default {
   components: { AppHeader }
 }
 </script>
-
-<style></style>

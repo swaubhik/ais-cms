@@ -27,7 +27,6 @@ export const useUserStore = defineStore('user', {
         console.log({
           email: this.userData.email,
           uid: this.userData.uid,
-          photoURL: this.userData.photoURL
         })
         router.push({ name: 'login' })
       } catch (error) {
@@ -68,7 +67,6 @@ export const useUserStore = defineStore('user', {
               this.userData = {
                 email: user.email,
                 uid: user.uid,
-                photoURL: user.photoURL
               }
             } else {
               this.userData = null
