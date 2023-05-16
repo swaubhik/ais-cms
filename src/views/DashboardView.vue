@@ -9,20 +9,32 @@
       "
       alt="Avatar"
     />
+    <div class="flex-1">
+      <ul>
+        <li v-for="chapter in chapters" :key="chapter.id">{{ chapter.id }} {{ chapter.title }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
-import { useUserStore } from '../stores/user'
+// import { useUserStore } from '../stores/user'
+import { useChaptersStore } from '../stores/chapters'
 export default {
   data() {
     return {
-      userStore: useUserStore(),
-      uid: useUserStore().userData.uid
+      useChapters: useChaptersStore()
     }
   },
-  mounted() {
-    this.userStore.userData
+  // call getChapters() when component is created
+  created() {
+    this.useChapters.getChapters()
+  },
+  // get chapters from store
+  computed: {
+    chapters() {
+      return this.useChapters.chapters
+    }
   }
 }
 </script>
