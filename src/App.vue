@@ -4,12 +4,14 @@
     <div class="mx-auto max-w-7xl">
       <router-view />
     </div>
+    <app-footer />
   </main>
 </template>
 
 <script>
+import AppFooter from './components/AppFooter.vue'
 import AppHeader from './components/AppHeader.vue'
 export default {
-  components: { AppHeader }
+  components: { AppHeader, AppFooter }
 }
 </script>
