@@ -1,14 +1,16 @@
-import { collection , getDocs } from 'firebase/firestore'
+import { collection, getDocs } from 'firebase/firestore'
 import { defineStore } from 'pinia'
 import { db } from '../firebase'
 
 export const useChaptersStore = defineStore('chapter', {
   state: () => ({
     chapters: [],
-    chapter: {}
+    chapter: {},
+    loading: false
   }),
   actions: {
     async getChapters() {
+      this.loading = true
       const chapterCollectionRef = collection(db, 'chapters')
 
       try {
@@ -23,6 +25,7 @@ export const useChaptersStore = defineStore('chapter', {
         })
 
         this.chapters = chapters
+        this.loading = false
       } catch (error) {
         console.error('Error getting chapters:', error)
       }
