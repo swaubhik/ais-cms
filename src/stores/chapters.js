@@ -67,6 +67,6 @@ export const useChaptersStore = defineStore('chapter', {
       } catch (error) {
         console.error('Error adding chapter:', error)
       }
-    }
+    },
   }
 })
