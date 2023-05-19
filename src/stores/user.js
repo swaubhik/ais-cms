@@ -15,6 +15,11 @@ export const useUserStore = defineStore('user', {
     loadingSession: false,
     errorServer: null
   }),
+  getters: {
+    isLoggedIn: (state) => !!state.userData,
+    getuserName: (state) => state.userData.email.split('@')[0],
+    getuserAvatar: (state) => 'https://api.dicebear.com/6.x/avataaars/svg?seed=' +  state.userData.uid + '&background=%23fff&radius=50&margin=10&size=64'
+  },
   actions: {
     setErrorServer(error) {
       this.errorServer = error
@@ -47,6 +52,7 @@ export const useUserStore = defineStore('user', {
         this.errorServer = error.message
       } finally {
         this.loadingUser = false
+        console.log(this.userData)
       }
     },
     async logoutUser() {
@@ -65,8 +71,8 @@ export const useUserStore = defineStore('user', {
           (user) => {
             if (user) {
               this.userData = {
-                email: user.email,
-                uid: user.uid
+                uid: user.uid,
+                email: user.email
               }
             } else {
               this.userData = null

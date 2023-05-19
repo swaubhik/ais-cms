@@ -58,41 +58,11 @@
           <p class="justify-items-end">Status</p>
         </div>
       </div>
-      <div class="flex flex-col gap-2 h-52 overflow-auto scroll-m-0.5">
-        <div
-          v-for="chapter in chapters"
-          :key="chapter.id"
-          class="flex justify-between items-center font-semibold text-lg bg-light px-4 py-2 rounded-lg"
-        >
-          <p class="w-1/2">{{ chapter.title }}</p>
-          <p class="w-1/5">{{ chapter.updatedAt.toDate().toDateString() }}</p>
-          <p class="w-1/5">{{ chapter.createdAt.toDate().toDateString() }}</p>
-          <p class="justify-items-end">
-            <span v-if="chapter.status === 0" class="text-red-600">Draft</span>
-            <span v-else-if="chapter.status === 1" class="text-emerald-600">Published</span>
-            <span v-else-if="chapter.status === 2" class="text-blue-600">Review</span>
-          </p>
-        </div>
-        <div
-          v-for="chapter in chapters"
-          :key="chapter.id"
-          class="flex justify-between items-center font-semibold text-lg bg-light px-4 py-2 rounded-lg"
-        >
-          <p class="w-1/2">{{ chapter.title }}</p>
-          <p class="w-1/5">{{ chapter.updatedAt.toDate().toDateString() }}</p>
-          <p class="w-1/5">{{ chapter.createdAt.toDate().toDateString() }}</p>
-          <p class="justify-items-end">
-            <span v-if="chapter.status === 0" class="text-red-600">Draft</span>
-            <span v-else-if="chapter.status === 1" class="text-emerald-600">Published</span>
-            <span v-else-if="chapter.status === 2" class="text-blue-600">Review</span>
-          </p>
-        </div>
-        <div
-          v-if="useChapters.loading"
-          class="flex justify-center items-center w-full bg-light h-52"
-        >
+      <!-- add loader while chapters are loaded -->
+      <div v-if="useChapters.loading" class="flex">
+        <div class="flex justify-center items-center w-full h-52">
           <svg
-            class="animate-spin -ml-1 mr-3 h-10 w-10 text-gray-900"
+            class="animate-spin -ml-1 mr-3 h-10 w-10 text-dark-lighter"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -112,20 +82,9 @@
             ></path>
           </svg>
         </div>
-        <div
-          v-for="chapter in chapters"
-          :key="chapter.id"
-          class="flex justify-between items-center font-semibold text-lg bg-light px-4 py-2 rounded-lg"
-        >
-          <p class="w-1/2">{{ chapter.title }}</p>
-          <p class="w-1/5">{{ chapter.updatedAt.toDate().toDateString() }}</p>
-          <p class="w-1/5">{{ chapter.createdAt.toDate().toDateString() }}</p>
-          <p class="justify-items-end">
-            <span v-if="chapter.status === 0" class="text-red-600">Draft</span>
-            <span v-else-if="chapter.status === 1" class="text-emerald-600">Published</span>
-            <span v-else-if="chapter.status === 2" class="text-blue-600">Review</span>
-          </p>
-        </div>
+      </div>
+
+      <div v-else class="flex flex-col gap-2 h-52 overflow-auto scroll-m-0.5">
         <div
           v-for="chapter in chapters"
           :key="chapter.id"
