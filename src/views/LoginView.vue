@@ -47,6 +47,9 @@
                 Log In
               </button>
             </div>
+            <div class="text-red-500">
+              <p v-if="userStore.errorServer">{{ userStore.errorServer }}</p>
+            </div>
             <div class="flex justify-center">
               <p class="text-dark">
                 Don't have an account?
