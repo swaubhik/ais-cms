@@ -126,19 +126,26 @@
       </form>
     </div>
     <!-- Live Preview -->
-    <div class="w-96 bg-light rounded-2xl p-2 text-black">
-      <div class="p-4 bg-cover rounded-2xl" :style="{ backgroundImage: `url(${bgImageUrl})` }">
+    <div class="w-80 bg-light h-[70vh] rounded-2xl p-2 text-black flex flex-col">
+      <div
+        class="p-4 bg-contain bg-no-repeat rounded-2xl justify-end h-full"
+        :style="{ backgroundImage: `url(${bgImageUrl})` }"
+      >
         <!-- <div class="w-1/7">
           <img class="absolute" src="@/assets/images/mobile_mockup.png" alt="mobile" />
         </div> -->
         <h3 class="text-2xl font-bold mb-2 mt-12">{{ formData.title }}</h3>
-        <p class="mt-6">{{ formData.description }}</p>
+        <p class="mt-6 break-words">{{ formData.description }}</p>
         <div class="mt-4 font-bold flex gap-1">
           <span>by</span>
           <span>{{ useUser.getuserName }}</span>
         </div>
         <div class="mt-4">
-          <!-- <img :src="bgImageUrl" alt="Cover Image" class="w-full max-h-64 object-contain" /> -->
+          <img
+            src="@/assets/images/character_1.png"
+            alt="Chacter-Image"
+            class="w-full max-h-64 object-contain"
+          />
         </div>
       </div>
     </div>
