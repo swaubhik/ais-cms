@@ -19,6 +19,9 @@ export default {
       },
       minHeight: {
         '80vh': '80vh'
+      },
+      width: {
+        '1/7': '50%'
       }
     }
   },
