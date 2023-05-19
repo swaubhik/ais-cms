@@ -1,7 +1,7 @@
 <template>
   <main class="min-h-screen relative bg-primary bg-hero-pattern bg-cover bg-center bg-no-repeat">
     <app-header />
-    <div class="mx-auto max-w-7xl">
+    <div class="mx-auto max-w-8xl">
       <router-view />
     </div>
     <app-footer />
