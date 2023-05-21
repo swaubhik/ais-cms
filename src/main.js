@@ -6,9 +6,12 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-const app = createApp(App)
+import { auth } from './firebase/'
 
-app.use(createPinia())
-app.use(router)
+let app
 
-app.mount('#app')
+auth.onAuthStateChanged(() => {
+  if (!app) {
+    app = createApp(App).use(createPinia()).use(router).mount('#app')
+  }
+})

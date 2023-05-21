@@ -25,5 +25,29 @@ export default {
       }
     }
   },
-  plugins: []
+  daisyui: {
+    styled: true,
+    themes: [
+      {
+        mytheme: {
+          primary: '#F6D65D',
+          secondary: '#FDF7DF',
+          accent: '#FDF7DF',
+          neutral: '#0B2435',
+          'neutral-focus': '#20435C',
+          'neutral-content': '#FDF7DF',
+          'base-100': '#FDF7DF',
+          info: '#3ABFF8',
+          success: '#36D399',
+          warning: '#FBBD23',
+          error: '#F87272'
+        }
+      }
+    ],
+    base: true,
+    utils: true,
+    logs: true,
+    rtl: false
+  },
+  plugins: [require('daisyui')]
 }

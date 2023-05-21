@@ -20,39 +20,78 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      component: HomeView,
+      meta: {
+        title: 'Home',
+        requiresAuth: false
+      }
     },
     {
       path: '/login',
       name: 'login',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/LoginView.vue')
+      component: () => import('../views/LoginView.vue'),
+      meta: {
+        title: 'Login',
+        requiresAuth: false
+      }
     },
     {
       path: '/register',
       name: 'register',
-      component: () => import('../views/RegisterView.vue')
+      component: () => import('../views/RegisterView.vue'),
+      meta: {
+        title: 'Register',
+        requiresAuth: false
+      }
     },
     {
       path: '/forgot-password',
       name: 'forgot-password',
-      component: () => import('../views/ForgotPasswordView.vue')
+      component: () => import('../views/ForgotPasswordView.vue'),
+      meta: {
+        title: 'Forgot-password',
+        requiresAuth: true
+      }
     },
     {
       path: '/dashboard',
       name: 'dashboard',
       component: () => import('../views/DashboardView.vue'),
-      beforeEnter: requireAuth
+      meta: {
+        title: 'Dashboard',
+        requiresAuth: true
+      }
     },
     {
       path: '/add-chapter',
       name: 'add-chapter',
       component: () => import('../views/AddChapterView.vue'),
-      beforeEnter: requireAuth
+      meta: {
+        title: 'Create Chapter',
+        requiresAuth: true
+      }
     }
-  ]
+  ],
+  scrollBehavior() {
+    return { x: 0, y: 0 }
+  }
 })
 
 export default router
+
+router.beforeEach(async (to, from, next) => {
+  document.title = `${to.meta.title} | AIS CMS`
+  const userStore = useUserStore()
+  userStore.loadingSession = true
+  const user = await userStore.currentUser()
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (!user) {
+      next({ name: 'login' })
+    } else {
+      next()
+    }
+  } else {
+    next()
+  }
+  userStore.loadingSession = false
+})

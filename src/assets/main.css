@@ -9,3 +9,6 @@
     font-family: Montserrat, system-ui, sans-serif;
   }
 }
+.btn{
+  @apply normal-case;
+}
