@@ -45,6 +45,12 @@ const router = createRouter({
       name: 'dashboard',
       component: () => import('../views/DashboardView.vue'),
       beforeEnter: requireAuth
+    },
+    {
+      path: '/add-chapter',
+      name: 'add-chapter',
+      component: () => import('../views/AddChapterView.vue'),
+      beforeEnter: requireAuth
     }
   ]
 })

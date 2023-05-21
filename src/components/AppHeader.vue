@@ -1,10 +1,10 @@
 <template>
   <header class="bg-light py-2 text-lg font-bold text-dark">
-    <div class="mx-auto flex max-w-8xl items-center justify-between">
+    <div class="mx-auto flex max-w-8xl items-center justify-between px-10">
       <RouterLink :to="{ name: 'home' }"
         ><img alt="App Logo" class="logo" src="@/assets/logo.svg" width="125" height="125"
       /></RouterLink>
-      <div class="flex">
+      <div v-show="!userStore.isLoggedIn" class="flex">
         <nav class="flex items-center justify-center gap-12">
           <span v-show="activeRoute === 'register'">Already have an account</span>
           <RouterLink
@@ -33,10 +33,10 @@
           >
         </nav>
       </div>
-      <button v-show="userStore.userData" class="flex items-center justify-center">
-        <div v-if="userStore.currentUser" class="flex items-center justify-center">
-          <img :src="avatar" alt="Avatar" />
-          <span v-if="username" class="text-dark">{{ username.email }}</span>
+      <div v-show="userStore.isLoggedIn" class="flex items-center justify-center">
+        <div v-if="userStore.userData" class="flex items-center justify-center">
+          <img :src="userStore.getuserAvatar" alt="Avatar" />
+          <span class="text-dark">{{ userStore.getuserName }}</span>
         </div>
         <div class="relative flex items-center ml-2 cursor-pointer">
           <button :class="{ 'transform rotate-180': isDropdownOpen }" @click="toggleDropdown">
@@ -62,7 +62,7 @@
             <button @click="userStore.logoutUser()">Logout</button>
           </div>
         </div>
-      </button>
+      </div>
     </div>
   </header>
 </template>
@@ -79,23 +79,8 @@ export default {
   },
   watch: {
     $route(to) {
-      console.log(to.name)
       this.activeRoute = to.name
-    }
-  },
-  computed: {
-    uid() {
-      return this.userStore.currentUser.uid
-    },
-    username() {
-      return this.userStore.userData
-    },
-    avatar() {
-      return (
-        'https://api.dicebear.com/6.x/avataaars/svg?seed=' +
-        this.userStore.currentUser.uid +
-        '&background=%23fff&radius=50&margin=10&size=64'
-      )
+      this.isDropdownOpen = false
     }
   },
   methods: {
