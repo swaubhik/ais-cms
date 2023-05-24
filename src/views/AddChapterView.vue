@@ -46,7 +46,7 @@
         <div class="flex items-center justify-between">
           <label for="ageGroup">Age Group</label>
           <select v-model="formData.ageGroup" id="ageGroup" class="select w-full max-w-xs">
-            <option v-for="age in formData.ageGroups">{{ age }} years</option>
+            <option v-for="age in formData.ageGroups" :key="age">{{ age }} years</option>
           </select>
         </div>
         <button type="submit" class="btn btn-lg">Create</button>
