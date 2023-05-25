@@ -111,8 +111,8 @@
 import { useChaptersStore } from '../stores/chapters'
 import { useUserStore } from '../stores/user'
 import AppLoader from '../components/AppLoader.vue'
-import { storage, db } from '../firebase'
-import { ref, uploadBytesResumable, getDownloadURL, listAll } from 'firebase/storage'
+import { storage } from '../firebase'
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 export default {
   components: {
     AppLoader

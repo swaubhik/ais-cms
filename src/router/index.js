@@ -81,14 +81,14 @@ const router = createRouter({
       }
     },
     {
-      path: '/chapter/:id/:page',
+      path: '/chapter/:id/create-page/:pageNumber',
       name: 'chapter-page',
       component: () => import('../views/ChapterView.vue'),
       meta: {
         title: 'Chapter',
         requiresAuth: true
       }
-    },
+    }
   ],
   scrollBehavior() {
     return { x: 0, y: 0 }
