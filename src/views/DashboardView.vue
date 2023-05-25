@@ -90,7 +90,9 @@
           :key="chapter.id"
           class="flex justify-between items-center font-semibold text-lg bg-light px-4 py-2 rounded-lg"
         >
-          <p class="w-1/2">{{ chapter.title }}</p>
+          <router-link :to="{ name: 'chapter', params: { id: chapter.id } }" class="w-1/2">
+            {{ chapter.title }}
+          </router-link>
           <p class="w-1/5">{{ chapter.updatedAt.toDate().toDateString() }}</p>
           <p class="w-1/5">{{ chapter.createdAt.toDate().toDateString() }}</p>
           <p class="justify-items-end">

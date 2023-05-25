@@ -70,7 +70,25 @@ const router = createRouter({
         title: 'Create Chapter',
         requiresAuth: true
       }
-    }
+    },
+    {
+      path: '/chapter/:id',
+      name: 'chapter',
+      component: () => import('../views/ChapterView.vue'),
+      meta: {
+        title: 'Chapter',
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/chapter/:id/:page',
+      name: 'chapter-page',
+      component: () => import('../views/ChapterView.vue'),
+      meta: {
+        title: 'Chapter',
+        requiresAuth: true
+      }
+    },
   ],
   scrollBehavior() {
     return { x: 0, y: 0 }

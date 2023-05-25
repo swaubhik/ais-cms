@@ -1,0 +1,120 @@
+{
+  "id": "Q9DdyuiqTTUASu943O8f",
+  "title": "Fly High",
+  "creator": "Banamita Sarma",
+  "createdAt": { "seconds": 1684436110, "nanoseconds": 420000000 },
+  "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dummy%2Fcover.png?alt=media&token=74084e05-46c2-47b7-b435-d7caefc83e7b",
+  "updatedAt": { "seconds": 1684349521, "nanoseconds": 824000000 },
+  "pages": [
+    {
+      "question": "",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Fcover_1.jpg?alt=media&token=0e318e47-896a-430d-b00f-d7094ca8abd5",
+      "pageType": 0,
+      "text": "Fly High",
+      "longText": "If we look around, there are different birds can be seen. Each bird has different characteristics, habits. Learn about different birds and facts about them. ",
+      "options": []
+    },
+    {
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Ffeather2.jpg?alt=media&token=d3552e2e-d9b4-4fff-971e-95db9e03fe7c",
+      "options": ["", "", "", ""],
+      "text": "",
+      "pageType": 1,
+      "question": "",
+      "longText": "If we look around, there are various birds can be seen in different places."
+    },
+    {
+      "longText": "Each of them has different claws, beaks, feathers and sounds.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Ffeather2.jpg?alt=media&token=d3552e2e-d9b4-4fff-971e-95db9e03fe7c",
+      "question": "",
+      "pageType": 1,
+      "text": "",
+      "options": ["", "", "", ""]
+    },
+    {
+      "pageType": 2,
+      "options": ["Pigeon", "Peacock", "Parrot", "Woodpecker"],
+      "question": "waht is this",
+      "longText": "On my head I have a crest, All say I dance the best, Of my feathers I am proud, Before the rain I cry aloud",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Fpeacock.jpg?alt=media&token=98f9454c-a966-4e64-ab4b-fbb38c0d6f25"
+    },
+    {
+      "longText": "Long and grooved is my tail, High up in the sky I sail, I pick and eat all the mice. The _____ is what you call me.",
+      "options": ["Parrot", "Myna", "Eagle", "Crow"],
+      "question": "What Bird is it?",
+      "pageType": 2,
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Feagle.jpg?alt=media&token=1efadf5a-0548-46b5-ba55-2c2a01f4bc21"
+    },
+    {
+      "pageType": 1,
+      "question": "What Bird is it?",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Ffeather.jpg?alt=media&token=c7e50b25-48f7-4554-a28b-5e33df86d1ac",
+      "options": ["Parrot", "Myna", "Eagle", "Crow"],
+      "longText": "The feathers of birds are of different colours, shapes and sizes."
+    },
+    {
+      "longText": "Their feathers help them to fly and keep them warm too.",
+      "pageType": 1,
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Ffeather.jpg?alt=media&token=c7e50b25-48f7-4554-a28b-5e33df86d1ac"
+    },
+    {
+      "longText": "From time to time birds lose their old feathers and new ones grow in their place.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Ffeather2.jpg?alt=media&token=d3552e2e-d9b4-4fff-971e-95db9e03fe7c",
+      "pageType": 1
+    },
+    {
+      "longText": "You must have often seen feathers of birds lying around.",
+      "pageType": 1,
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Ffeather2.jpg?alt=media&token=d3552e2e-d9b4-4fff-971e-95db9e03fe7c"
+    },
+    {
+      "pageType": 2,
+      "question": "What Bird is it?",
+      "options": ["Owl", "Crow", "Pigeon", "Parrot"],
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Fparrot.jpg?alt=media&token=1ac60942-687c-4e1b-8134-9adddce53254",
+      "longText": "My feathers are green, My beak’s red, Guava and green chilli I’m fed, I love to imitate people’s voice, And keep making a lot of noise."
+    },
+    {
+      "question": "What Bird is it?",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Fcrow.jpg?alt=media&token=1744f71b-5980-42e2-b13b-b63d183742ab",
+      "longText": "Black are my feathers and black is my color. kau-kau I do all day long",
+      "pageType": 3,
+      "options": ["Owl", "Crow", "Pigeon", "Parrot"]
+    },
+    {
+      "pageType": 1,
+      "longText": "Have you ever noticed that birds fly and walk in different ways. Their neck movements also differ.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Ffeather2.jpg?alt=media&token=d3552e2e-d9b4-4fff-971e-95db9e03fe7c"
+    },
+    {
+      "longText": "The mynah moves her neck back and forth with a jerk. The owl can rotate its neck backwards to a large extent.",
+      "pageType": 1,
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Fowl.jpg?alt=media&token=097b4e64-5107-4c23-a53a-e48cdd88e92c"
+    },
+    {
+      "longText": "Just as birds have different types of beaks, they also eat different types of food.",
+      "pageType": 1,
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Ffeather2.jpg?alt=media&token=d3552e2e-d9b4-4fff-971e-95db9e03fe7c"
+    },
+    {
+      "pageType1": 1,
+      "longText": "While some eat fruits, some eat seeds. Some eat eggs, while others eat fish.",
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Ffood.jpg?alt=media&token=d187706e-6d47-4438-a5da-897f3fad0652"
+    },
+    {
+      "question": "Select the bird who eat chilly.",
+      "options": ["Owl", "Crow", "Pigeon", "Parrot"],
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Fchilli.jpg?alt=media&token=5de7ef95-d925-4a2a-810d-da2e12dd9da9",
+      "pageType": 4
+    },
+    {
+      "imageUrl": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dumchap%2Fgrain.jpg?alt=media&token=55ae4ae3-b490-4d5e-aab7-e6ab6dc5c8c6",
+      "options": ["Pigeon", "Owl", "Crow", "Eagle"],
+      "pageType": 4,
+      "question": "Select the bird who eat grains."
+    }
+  ],
+  "lastUpdate": { "seconds": 1684436248, "nanoseconds": 511000000 },
+  "status": 1,
+  "image": "https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/dummy%2Fcover.png?alt=media&token=74084e05-46c2-47b7-b435-d7caefc83e7b",
+  "description": "If we look around, there are different birds can be seen. Each bird has different characteristics, habits. Learn about different birds and facts about them. "
+}
