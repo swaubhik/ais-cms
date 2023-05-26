@@ -120,6 +120,9 @@ export default {
   computed: {
     chapters() {
       return this.useChapters.chapters
+    },
+    pagesLength() {
+      return this.useChapters.chapter.pages.length
     }
   }
 }

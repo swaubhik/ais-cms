@@ -70,7 +70,7 @@ export const useChaptersStore = defineStore('chapter', {
             {
               imageUrl: chapter.bgImage,
               longText: chapter.description,
-              pageNumber: 0,
+              pageNumber: 0
             }
           ]
         })
@@ -102,6 +102,27 @@ export const useChaptersStore = defineStore('chapter', {
           })
         }
       )
+    },
+    async updateChapter(chapter) {
+      this.isloading = true
+      const chapterCollectionRef = collection(db, 'chapters')
+
+      try {
+        await chapterCollectionRef.doc(chapter.id).update({
+          title: chapter.title,
+          description: chapter.description,
+          imageUrl: chapter.coverImage,
+          updatedAt: new Date()
+        })
+        this.isloading = false
+        this.chapters.push({
+          ...chapter
+        })
+
+        // router.push({ name: 'chapter', params: { id: chapter.id } })
+      } catch (error) {
+        console.error('Error updating chapter:', error)
+      }
     }
   }
 })

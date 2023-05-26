@@ -1,4 +1,9 @@
 import { defineStore } from 'pinia'
+import { collection, getDocs, updateDoc, doc, arrayUnion } from 'firebase/firestore'
+import { serverTimestamp } from 'firebase/firestore'
+import { db } from '../firebase'
+import router from '../router'
+import { useChaptersStore } from './chapters'
 
 export const usePagesStore = defineStore('pages', {
   state: () => ({
@@ -53,18 +58,25 @@ export const usePagesStore = defineStore('pages', {
     },
     async addPage(page) {
       this.isloading = true
-      // pages are inside chapters collection
-      const chapterCollectionRef = collection(db, 'chapters')
-
+      // pages array are inside chapters collection in firestore
+      const chapterPageRef = doc(db, 'chapters', useChaptersStore().chapter.id)
+      console.log(chapterPageRef)
       try {
         // add page to firestore with createdAt timestamp and updatedAt timestamp
-        await addDoc(chapterCollectionRef, {
-          ...page,
-          createdAt: serverTimestamp(),
-          updatedAt: serverTimestamp()
+        await updateDoc(chapterPageRef, {
+          pages: arrayUnion({
+            ...page
+          })
         })
         this.isloading = false
-        router.push('/dashboard')
+        this.pages.push({
+          ...page
+        })
+        const chapter = useChaptersStore().chapter
+        chapter.pages.push({
+          ...page
+        })
+        router.push(`/chapter/${chapter.id}/create-page/${page.pageNumber}`)
       } catch (error) {
         console.error('Error adding page:', error)
       }

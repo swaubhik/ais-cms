@@ -143,6 +143,8 @@
 <script>
 import { useChaptersStore } from '../stores/chapters'
 import { usePagesStore } from '../stores/pages'
+import { getDownloadURL, ref, uploadBytesResumable } from '@firebase/storage'
+import { storage } from '../firebase'
 export default {
   data() {
     return {
@@ -191,24 +193,29 @@ export default {
   },
   methods: {
     submitAndNext() {
-      this.submitForm()
       this.formData.pageNumber++
+      // clear all the data
       this.formData.pageType = null
-      this.$router.push(`/chapters/${this.chapter.id}/create-page/${this.formData.pageNumber}`)
+      this.formData.longText = ''
+      this.formData.question = ''
+      this.formData.options = ['', '', '', '']
+      this.formData.imageUrl = null
+      this.pageStore.addPage(this.formData)
+      // this.$router.push(`/chapters/${this.chapter.id}/create-page/${this.formData.pageNumber}`)
     },
     handleFileUploadBackgroundImage(event) {
       this.formData.imageUrl = event.target.files[0]
       // upload to storage here
       const chapterFolder = this.chapterStore.chapter.title.trim()
       console.log(chapterFolder)
-      const storageRef = ref(storage, `chapters/${chapterFolder}/${this.formData.pageNumber}`)
+      const storageRef = ref(storage, `chapters/${chapterFolder}/pages/${this.formData.pageNumber}`)
       const uploadTask = uploadBytesResumable(storageRef, this.formData.imageUrl)
       uploadTask.on(
         'state_changed',
         (snapshot) => {
           const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100
           console.log('Upload is ' + progress + '% done')
-          this.uploadProgress = progress
+          this.uploadProgress = progress.toFixed(2)
           switch (snapshot.state) {
             case 'paused':
               console.log('Upload is paused')
