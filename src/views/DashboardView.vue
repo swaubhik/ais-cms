@@ -26,10 +26,13 @@
           </svg>
           New Chapter
         </router-link>
+        <!-- toggle edit button -->
         <button
+          @click="toggleEdit"
           class="flex justify-center items-center bg-light text-gray-900 font-semibold px-4 py-2 rounded-lg"
         >
           <svg
+            v-if="!editMode"
             class="w-6 h-6 mr-2"
             fill="none"
             stroke="currentColor"
@@ -40,10 +43,17 @@
               stroke-linecap="round"
               stroke-linejoin="round"
               stroke-width="2"
-              d="M13 10V3L4 14h7v7l9-11h-7z"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 4v.01M8 4v.01M16 4v.01M12 20v.01M8 20v.01M16 20v.01"
             ></path>
           </svg>
-          New Book
+          <span v-if="!editMode">Edit</span>
+          <span v-else>Done</span>
         </button>
       </div>
     </div>
@@ -59,7 +69,7 @@
         </div>
       </div>
       <!-- add loader while chapters are loaded -->
-      <div v-if="useChapters.loading" class="flex">
+      <div v-if="chapterStore.loading" class="flex">
         <div class="flex justify-center items-center w-full h-52">
           <svg
             class="animate-spin -ml-1 mr-3 h-10 w-10 text-dark-lighter"
@@ -90,7 +100,19 @@
           :key="chapter.id"
           class="flex justify-between items-center font-semibold text-lg bg-light px-4 py-2 rounded-lg"
         >
-          <router-link :to="{ name: 'chapter', params: { id: chapter.id } }" class="w-1/2">
+          <router-link
+            v-if="editMode"
+            :to="{ name: 'chapter', params: { id: chapter.id } }"
+            class="w-1/2"
+          >
+            {{ chapter.title }} ...🖊️
+          </router-link>
+          <!-- pass in two params -->
+          <router-link
+            v-else
+            :to="{ name: 'chapter-preview', params: { id: chapter.id }, query: { pageNumber: 0 } }"
+            class="w-1/2"
+          >
             {{ chapter.title }}
           </router-link>
           <p class="w-1/5">{{ chapter.updatedAt.toDate().toDateString() }}</p>
@@ -111,18 +133,21 @@ import { useChaptersStore } from '../stores/chapters'
 export default {
   data() {
     return {
-      useChapters: useChaptersStore()
+      chapterStore: useChaptersStore(),
+      editMode: false
     }
   },
   created() {
-    this.useChapters.getChapters()
+    this.chapterStore.getChapters()
   },
   computed: {
     chapters() {
-      return this.useChapters.chapters
-    },
-    pagesLength() {
-      return this.useChapters.chapter.pages.length
+      return this.chapterStore.chapters
+    }
+  },
+  methods: {
+    toggleEdit() {
+      this.editMode = !this.editMode
     }
   }
 }

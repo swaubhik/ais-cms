@@ -27,7 +27,6 @@ export const usePagesStore = defineStore('pages', {
             ...doc.data()
           })
         })
-
         this.pages = chapters
         this.isloading = false
       } catch (error) {

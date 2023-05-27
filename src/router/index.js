@@ -63,6 +63,15 @@ const router = createRouter({
       }
     },
     {
+      path: '/chapter-preview/:id/',
+      name: 'chapter-preview',
+      component: () => import('../views/PreviewView.vue'),
+      meta: {
+        title: 'Preview',
+        requiresAuth: true
+      }
+    },
+    {
       path: '/add-chapter',
       name: 'add-chapter',
       component: () => import('../views/AddChapterView.vue'),
