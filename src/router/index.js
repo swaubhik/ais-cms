@@ -97,7 +97,16 @@ const router = createRouter({
         title: 'Chapter',
         requiresAuth: true
       }
-    }
+    }, 
+    {
+      path: '/privacy',
+      name: 'privacy-page',
+      component: () => import('../views/PrivacyView.vue'),
+      meta: {
+        title: 'Privacy Policy',
+        requiresAuth: false
+      }
+    },
   ],
   scrollBehavior() {
     return { x: 0, y: 0 }
