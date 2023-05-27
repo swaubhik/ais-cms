@@ -15,10 +15,7 @@
         Create {{ chapter.title }} Page {{ formData.pageNumber }}
       </h1>
       <!-- form -->
-      <form
-        class="form-control space-y-4 text-lg mt-10 font-medium w-1/2"
-        @submit.prevent="submitForm"
-      >
+      <form class="form-control space-y-4 text-lg mt-10 font-medium" @submit.prevent="submitForm">
         <div class="flex flex-col">
           <label for="layout">Select Layout</label>
           <div class="flex mt-6">
@@ -39,7 +36,7 @@
               />
             </button>
           </div>
-          <div v-show="formData.pageType !== null" class="flex items-center justify-between">
+          <div v-show="formData.pageType !== null" class="flex items-center justify-between mt-4">
             <label for="imageUrl">Background Image</label>
             <input
               @change="handleFileUploadBackgroundImage"
@@ -52,7 +49,7 @@
         </div>
         <div v-if="formData.pageType">
           <div v-if="formData.pageType === 1">
-            <div class="flex justify-between">
+            <div class="flex justify-between gap-2">
               <label for="longText">Long Text</label>
               <textarea
                 v-model="formData.longText"
@@ -76,7 +73,7 @@
                 placeholder="Description"
               ></textarea>
             </div>
-            <div class="flex items-center justify-between">
+            <div class="flex items-center justify-between gap-2">
               <label for="title">Question</label>
               <input
                 v-model="formData.question"
@@ -86,13 +83,13 @@
                 class="input input-bordered w-full max-w-xs"
               />
             </div>
-            <div class="flex justify-between">
+            <div class="flex justify-between gap-2">
               <label for="title">Options</label>
-              <div class="space-y-2 w-full max-w-xs">
+              <div class="w-full max-w-xs">
                 <input
                   v-for="index in 4"
                   :key="index"
-                  v-model="formData.question"
+                  v-model="formData.options[index]"
                   id="options"
                   type="text"
                   :placeholder="`Option ${index}`"
@@ -138,11 +135,10 @@
         </div>
       </form>
     </div>
-    <div class="mockup-phone text-dark">
+    <div v-if="formData.pageType == 1" class="mockup-phone text-dark max-h-[76vh]">
       <div class="camera"></div>
       <div class="display">
         <div
-          v-if="formData.pageType == 1"
           class="artboard bg-white phone-1 relative bg-cover bg-no-repeat bg-center"
           :style="{ backgroundImage: `url(${formData.imageUrl})` }"
           style="text-shadow: black 1px 1px 1px 1px"
@@ -165,6 +161,74 @@
                 class="w-full max-h-64 object-contain"
               />
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      v-if="formData.pageType === 2 || formData.pageType === 3"
+      class="mockup-phone text-dark max-h-[76vh]"
+    >
+      <div class="camera"></div>
+      <div class="display">
+        <div
+          class="artboard bg-white phone-1 relative bg-cover bg-no-repeat bg-center p-4 space-y-4"
+          :style="{ backgroundImage: `url(${formData.imageUrl})` }"
+          style="text-shadow: black 1px 1px 1px 1px"
+        >
+          <div class="flex items-center justify-center">
+            <div class="relative w-full">
+              <div
+                v-if="formData.longText"
+                class="chat-bubble bg-primary text-dark w-full relative h-52 mt-10 overflow-auto break-words"
+              >
+                <p class="text-lg">{{ formData.longText }}</p>
+              </div>
+              <span
+                v-if="!formData.pageType === 2 || !formData.pageType === 3"
+                class="triangle"
+              ></span>
+            </div>
+          </div>
+          <div v-if="formData.question" class="chat-bubble">
+            <span>{{ formData.question }} ?</span>
+          </div>
+          <div class="flex flex-wrap space-y-2 gap-2">
+            <div v-for="option in formData.options" :key="option" class="">
+              <div v-if="option" class="btn btn-info">
+                <span>{{ option }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="formData.pageType === 4" class="mockup-phone text-dark max-h-[76vh]">
+      <div class="camera"></div>
+      <div class="display">
+        <div
+          class="artboard bg-white phone-1 relative bg-cover bg-no-repeat bg-center p-4 space-y-4"
+          :style="{ backgroundImage: `url(${formData.imageUrl})` }"
+          style="text-shadow: black 1px 1px 1px 1px"
+        >
+          <div class="p-4">
+            <div v-if="formData.question" class="chat-bubble mb-10">
+              <span>{{ formData.question }} ?</span>
+            </div>
+            <div class="flex flex-wrap space-y-2 gap-2">
+              <div v-for="option in formData.options" :key="option" class="">
+                <div v-if="option" class="btn btn-info">
+                  <span>{{ option }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 absolute bottom-0 left-1/2 -translate-x-1/2">
+            <img
+              src="@/assets/images/character_1.png"
+              alt="Chacter-Image"
+              class="w-full max-h-64 object-contain"
+            />
           </div>
         </div>
       </div>

@@ -37,18 +37,6 @@
         </div>
       </div>
     </div>
-    <!-- add two button for previous and next page -->
-    <div class="flex justify-between w-full mt-4">
-      <router-link
-        class="btn"
-        :to="{ name: 'chapter', params: { id: chapterStore.chapter.previousChapterId } }"
-      >
-        Previous
-      </router-link>
-      <button class="bg-dark text-white px-4 py-2 rounded-md" @click="chapterStore.nextPage">
-        Next
-      </button>
-    </div>
   </div>
 </template>
 
@@ -67,9 +55,7 @@ export default {
     }
   },
   created() {
-    this.pageNumber = this.$route.query.pageNumber
-      ? parseInt(this.$route.query.pageNumber)
-      : 0
+    this.pageNumber = this.$route.query.pageNumber ? parseInt(this.$route.query.pageNumber) : 0
     this.getChapter()
     this.getPages()
     this.getPage()
