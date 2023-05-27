@@ -63,6 +63,15 @@ const router = createRouter({
       }
     },
     {
+      path: '/chapter-preview/:id/',
+      name: 'chapter-preview',
+      component: () => import('../views/PreviewView.vue'),
+      meta: {
+        title: 'Preview',
+        requiresAuth: true
+      }
+    },
+    {
       path: '/add-chapter',
       name: 'add-chapter',
       component: () => import('../views/AddChapterView.vue'),
@@ -81,14 +90,14 @@ const router = createRouter({
       }
     },
     {
-      path: '/chapter/:id/:page',
+      path: '/chapter/:id/create-page/:pageNumber',
       name: 'chapter-page',
       component: () => import('../views/ChapterView.vue'),
       meta: {
         title: 'Chapter',
         requiresAuth: true
       }
-    },
+    }, 
     {
       path: '/privacy',
       name: 'privacy-page',
@@ -107,7 +116,7 @@ const router = createRouter({
 export default router
 
 router.beforeEach(async (to, from, next) => {
-  document.title = `${to.meta.title} | AIS CMS`
+  document.title = `${to.meta.title} | AIS Studio`
   const userStore = useUserStore()
   userStore.loadingSession = true
   const user = await userStore.currentUser()
