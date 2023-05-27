@@ -59,7 +59,6 @@ export const usePagesStore = defineStore('pages', {
       this.isloading = true
       // pages array are inside chapters collection in firestore
       const chapterPageRef = doc(db, 'chapters', useChaptersStore().chapter.id)
-      console.log(chapterPageRef)
       try {
         // add page to firestore with createdAt timestamp and updatedAt timestamp
         await updateDoc(chapterPageRef, {

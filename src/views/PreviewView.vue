@@ -1,5 +1,5 @@
 <template>
-  <div class="grid place-items-center min-h-80vh w-full">
+  <div class="grid grid-flow-col place-items-center min-h-80vh w-full">
     <AppLoader v-if="chapterStore.isloading" />
     <div class="mockup-phone text-dark">
       <div class="camera"></div>
@@ -37,12 +37,48 @@
         </div>
       </div>
     </div>
+    <div
+      v-if="userStore.userData.uid === 'HXSjv7RqKAfxNLJmlNPvtERCP7B3'"
+      class="flex flex-col justify-between h-full"
+    >
+      <button @click="acceptChapter()" class="btn btn-success gap-2 mt-10">
+        Accept
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+      <button @click="rejectChapter()" class="btn btn-error gap-2">
+        Reject
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zm-1.72 6.97a.75.75 0 10-1.06 1.06L10.94 12l-1.72 1.72a.75.75 0 101.06 1.06L12 13.06l1.72 1.72a.75.75 0 101.06-1.06L13.06 12l1.72-1.72a.75.75 0 10-1.06-1.06L12 10.94l-1.72-1.72z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </button>
+    </div>
   </div>
 </template>
 
 <script>
 import { useChaptersStore } from '../stores/chapters'
 import AppLoader from '../components/AppLoader.vue'
+import { useUserStore } from '../stores/user'
 
 export default {
   components: {
@@ -51,6 +87,7 @@ export default {
   data() {
     return {
       chapterStore: useChaptersStore(),
+      userStore: useUserStore(),
       pageNumber: 0
     }
   },
@@ -73,8 +110,15 @@ export default {
       await this.chapterStore.getPages(this.$route.params.id, this.pageNumber)
     },
     async getPage() {
-      console.log(this.pageNumber)
       await this.chapterStore.getPage(this.$route.params.id, this.pageNumber)
+    },
+    async acceptChapter() {
+      await this.chapterStore.acceptChapter(this.$route.params.id)
+      this.$router.push({ name: 'dashboard' })
+    },
+    async rejectChapter() {
+      await this.chapterStore.rejectChapter(this.$route.params.id)
+      this.$router.push({ name: 'dashboard' })
     }
   }
 }

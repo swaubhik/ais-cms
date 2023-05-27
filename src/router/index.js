@@ -107,7 +107,7 @@ const router = createRouter({
 export default router
 
 router.beforeEach(async (to, from, next) => {
-  document.title = `${to.meta.title} | AIS CMS`
+  document.title = `${to.meta.title} | AIS Studio`
   const userStore = useUserStore()
   userStore.loadingSession = true
   const user = await userStore.currentUser()

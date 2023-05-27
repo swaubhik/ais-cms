@@ -1,6 +1,7 @@
-import { collection, getDocs, addDoc } from 'firebase/firestore'
+import { collection, getDocs, addDoc, doc, updateDoc } from 'firebase/firestore'
 import { defineStore } from 'pinia'
 import { db } from '../firebase'
+import { useUserStore } from './user'
 import router from '../router'
 
 export const useChaptersStore = defineStore('chapter', {
@@ -22,10 +23,16 @@ export const useChaptersStore = defineStore('chapter', {
         const chapters = []
 
         querySnapshot.forEach((doc) => {
-          chapters.push({
-            id: doc.id,
-            ...doc.data()
-          })
+          if (
+            doc.data().creatorUid === useUserStore().userData.uid ||
+            (useUserStore().userData.uid === 'HXSjv7RqKAfxNLJmlNPvtERCP7B3' &&
+              doc.data().status === 0)
+          ) {
+            chapters.push({
+              id: doc.id,
+              ...doc.data()
+            })
+          }
         })
         this.chapters = chapters
         this.isloading = false
@@ -54,7 +61,7 @@ export const useChaptersStore = defineStore('chapter', {
         console.error('Error getting chapters:', error)
       }
     },
-    async addChapter(chapter) {
+    async addChapter(chapter, creatorUid) {
       this.isloading = true
       const chapterCollectionRef = collection(db, 'chapters')
 
@@ -65,6 +72,7 @@ export const useChaptersStore = defineStore('chapter', {
           description: chapter.description,
           imageUrl: chapter.coverImage,
           creator: chapter.creator,
+          creatorUid: creatorUid,
           createdAt: new Date(),
           updatedAt: new Date(),
           status: 0,
@@ -81,7 +89,7 @@ export const useChaptersStore = defineStore('chapter', {
           ...chapter
         })
 
-        router.push({ name: 'dashborad' })
+        router.push({ name: 'dashboard' })
       } catch (error) {
         console.error('Error adding chapter:', error)
       }
@@ -125,6 +133,26 @@ export const useChaptersStore = defineStore('chapter', {
         this.currentPage = chapters
           .find((chapter) => chapter.id === id)
           .pages.find((page) => page.pageNumber == pageNumber)
+        this.isloading = false
+      } catch (error) {
+        console.error('Error getting chapters:', error)
+      }
+    },
+    async acceptChapter(id) {
+      this.isloading = true
+      const chapterDocRef = doc(db, 'chapters', id)
+      try {
+        await updateDoc(chapterDocRef, { status: 1 })
+        this.isloading = false
+      } catch (error) {
+        console.error('Error getting chapters:', error)
+      }
+    },
+    async rejectChapter(id) {
+      this.isloading = true
+      const chapterDocRef = doc(db, 'chapters', id)
+      try {
+        await updateDoc(chapterDocRef, { status: -1 })
         this.isloading = false
       } catch (error) {
         console.error('Error getting chapters:', error)

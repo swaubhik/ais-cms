@@ -62,7 +62,7 @@
         </div>
       </div>
       <!-- add loader while chapters are loaded -->
-      <div v-if="chapterStore.loading" class="flex">
+      <div v-if="chapterStore.isloading" class="flex">
         <div class="flex justify-center items-center w-full h-52">
           <svg
             class="animate-spin -ml-1 mr-3 h-10 w-10 text-dark-lighter"
