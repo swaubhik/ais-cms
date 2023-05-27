@@ -81,7 +81,7 @@ export const useChaptersStore = defineStore('chapter', {
           ...chapter
         })
 
-        router.push({ name: 'chapter', params: { id: docRef.id } })
+        router.push({ name: 'dashborad' })
       } catch (error) {
         console.error('Error adding chapter:', error)
       }
