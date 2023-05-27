@@ -138,6 +138,37 @@
         </div>
       </form>
     </div>
+    <div class="mockup-phone text-dark">
+      <div class="camera"></div>
+      <div class="display">
+        <div
+          v-if="formData.pageType == 1"
+          class="artboard bg-white phone-1 relative bg-cover bg-no-repeat bg-center"
+          :style="{ backgroundImage: `url(${formData.imageUrl})` }"
+          style="text-shadow: black 1px 1px 1px 1px"
+        >
+          <div class="p-4 flex items-center justify-center">
+            <div class="relative w-full">
+              <div
+                v-if="formData.longText"
+                class="chat-bubble bg-primary text-dark w-full relative h-52 mt-10 overflow-auto break-words"
+              >
+                <p class="text-lg">{{ formData.longText }}</p>
+              </div>
+              <span class="triangle"></span>
+            </div>
+
+            <div class="mt-4 absolute bottom-0 left-1/2 -translate-x-1/2">
+              <img
+                src="@/assets/images/character_1.png"
+                alt="Chacter-Image"
+                class="w-full max-h-64 object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -244,3 +275,18 @@ export default {
   }
 }
 </script>
+<style scoped>
+.triangle {
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  transform: rotate(180deg);
+  width: 12px;
+  height: 12px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+
+  border-bottom: 10px solid #f6d65d;
+}
+</style>
