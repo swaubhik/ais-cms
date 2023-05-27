@@ -163,22 +163,26 @@ export default {
         {
           id: 1,
           name: 'layout one',
-          image: '/src/assets/images/layouts/layout_one.png'
+          image:
+            'https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/layouts%2Flayout_one.png?alt=media&token=92f3e2ab-1213-496c-b566-6a1143bf9b20'
         },
         {
           id: 2,
           name: 'layout two',
-          image: '/src/assets/images/layouts/layout_two.png'
+          image:
+            'https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/layouts%2Flayout_two.png?alt=media&token=46089622-7508-42d0-bce9-c05f35988887'
         },
         {
           id: 3,
           name: 'layout three',
-          image: '/src/assets/images/layouts/layout_three.png'
+          image:
+            'https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/layouts%2Flayout_three.png?alt=media&token=5b62cf53-fd7d-404f-b0b2-26ded63beb53'
         },
         {
           id: 4,
           name: 'layout four',
-          image: '/src/assets/images/layouts/layout_four.png'
+          image:
+            'https://firebasestorage.googleapis.com/v0/b/ais-ai-for-study.appspot.com/o/layouts%2Flayout_four.png?alt=media&token=d9bbe092-b1d3-408e-b0b3-fcfb84422f61'
         }
       ]
     }
