@@ -2,18 +2,6 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import { useUserStore } from '../stores/user'
 
-const requireAuth = async (to, from, next) => {
-  const userStore = useUserStore()
-  userStore.loadingSession = true
-  const user = await userStore.currentUser()
-  if (user) {
-    next()
-  } else {
-    next('/login')
-  }
-  userStore.loadingSession = false
-}
-
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -97,7 +85,7 @@ const router = createRouter({
         title: 'Chapter',
         requiresAuth: true
       }
-    }, 
+    },
     {
       path: '/privacy',
       name: 'privacy-page',
@@ -106,7 +94,7 @@ const router = createRouter({
         title: 'Privacy Policy',
         requiresAuth: false
       }
-    },
+    }
   ],
   scrollBehavior() {
     return { x: 0, y: 0 }
