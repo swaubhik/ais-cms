@@ -94,6 +94,16 @@ const router = createRouter({
         title: 'Privacy Policy',
         requiresAuth: false
       }
+    },
+    // erorrs
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'not-found',
+      component: () => import('../views/NotFoundView.vue'),
+      meta: {
+        title: 'Not Found',
+        requiresAuth: false
+      }
     }
   ],
   scrollBehavior() {
