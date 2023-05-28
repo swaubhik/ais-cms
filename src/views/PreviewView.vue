@@ -1,7 +1,7 @@
 <template>
   <div class="grid grid-flow-col place-items-center min-h-80vh w-full">
     <AppLoader v-if="chapterStore.isloading" />
-    <div class="mockup-phone text-dark">
+    <div class="mockup-phone text-black">
       <div class="camera"></div>
       <div class="display">
         <div
@@ -39,7 +39,7 @@
     </div>
     <div
       v-if="userStore.userData.uid === 'HXSjv7RqKAfxNLJmlNPvtERCP7B3'"
-      class="flex flex-col justify-between h-full"
+      class="flex flex-col justify-between h-40"
     >
       <button @click="acceptChapter()" class="btn btn-success gap-2 mt-10">
         Accept

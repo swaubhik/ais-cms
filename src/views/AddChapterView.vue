@@ -69,7 +69,7 @@
       </form>
     </div>
     <!-- Live Preview -->
-    <div class="mockup-phone text-white">
+    <div class="mockup-phone text-black">
       <div class="camera"></div>
       <div class="display">
         <div
