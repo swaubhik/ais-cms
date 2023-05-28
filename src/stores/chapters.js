@@ -67,7 +67,7 @@ export const useChaptersStore = defineStore('chapter', {
 
       try {
         // add chapter to firestore with createdAt timestamp and updatedAt timestamp
-        const docRef = await addDoc(chapterCollectionRef, {
+        await addDoc(chapterCollectionRef, {
           title: chapter.title,
           description: chapter.description,
           imageUrl: chapter.coverImage,

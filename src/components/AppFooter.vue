@@ -6,5 +6,9 @@
         >banamita</a
       >
     </h2>
+    <!-- privacy policy -->
+    <div class="absolute bottom-2 right-2">
+      <router-link class="font-bold" to="/privacy">Privacy Policy</router-link>
+    </div>
   </div>
 </template>

@@ -18,7 +18,10 @@ export const useUserStore = defineStore('user', {
   getters: {
     isLoggedIn: (state) => !!state.userData,
     getuserName: (state) => state.userData.email.split('@')[0],
-    getuserAvatar: (state) => 'https://api.dicebear.com/6.x/avataaars/svg?seed=' +  state.userData.uid + '&background=%23fff&radius=50&margin=10&size=64'
+    getuserAvatar: (state) =>
+      'https://api.dicebear.com/6.x/avataaars/svg?seed=' +
+      state.userData.uid +
+      '&background=%23fff&radius=50&margin=10&size=64'
   },
   actions: {
     setErrorServer(error) {
@@ -54,6 +57,7 @@ export const useUserStore = defineStore('user', {
         this.userData = null
         router.push({ name: 'login' })
       } catch (error) {
+        this.errorServer = error.message
       }
     },
     currentUser() {
