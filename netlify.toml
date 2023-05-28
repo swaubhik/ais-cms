@@ -1,5 +1,0 @@
-[[rediects]]
- from = "/privacy"
- to = "/privacy"
- status = 301
- force = true
